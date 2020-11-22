@@ -63,7 +63,6 @@ class SignUpFormBase extends Component {
           .set({
             name: fullname,
             email: email,
-            recipe: {},
           })
           .then(() => {
             this.setState({ ...INITIAL_STATE });
