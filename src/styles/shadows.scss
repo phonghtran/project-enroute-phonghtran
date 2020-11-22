@@ -1,0 +1,9 @@
+@mixin shadowUplift {
+  box-shadow: -0.5rem -0.5rem 1rem $shadowHighight,
+    0.125rem 0.125rem 0.5rem rgba($shadowShade, 0.32);
+}
+
+@mixin shadowInset {
+  box-shadow: -0.5rem -0.5rem 1rem $shadowHighight inset,
+    0.125rem 0.125rem 0.5rem rgba($shadowShade, 0.32) inset;
+}

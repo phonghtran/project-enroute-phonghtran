@@ -1,0 +1,7 @@
+@mixin borderFineLine {
+  border: 1px rgba($color: $secondaryAccentLight, $alpha: 0.16) solid;
+}
+
+@mixin roundedCorner($modifier) {
+  border-radius: 0.5rem * $modifier;
+}

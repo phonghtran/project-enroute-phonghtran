@@ -1,0 +1,113 @@
+.backgroundFullBleed {
+  background-size: cover;
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: -1;
+}
+
+.cardDelivery__container {
+  margin: 2rem 0 0;
+}
+
+.cardDoubleBorder {
+  &__innerContainer {
+    @include roundedCorner(1);
+    @include shadowUplift;
+    background-color: $shadowHighight;
+    padding: 3rem;
+  }
+  &__wrapper {
+    @include borderFineLine;
+    @include roundedCorner(1);
+    @include shadowInset;
+
+    background-color: $shadowHighight;
+
+    padding: 0.75rem;
+  }
+}
+.cardlist__container {
+  margin-top: 0;
+}
+
+.home__recentHistory {
+  margin: 3rem 0;
+  padding: 0 3.25rem;
+}
+
+.progressBar {
+  &__bar {
+    @include roundedCorner(0.5);
+    @include shadowUplift;
+
+    background: $secondaryBrandColor;
+    background: linear-gradient(
+      90deg,
+      $primaryBrandColor 0%,
+      $secondaryAccentLight 100%
+    );
+    height: 0.75rem;
+  }
+  &__container {
+    @include roundedCorner(1);
+    @include shadowInset;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+  }
+}
+.signin {
+  &__linkBack {
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  &__logoContainer {
+    margin: 0 0 3rem;
+    text-align: center;
+  }
+}
+
+.signout {
+  &__button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.breadbrumb {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.wrapperNarrow {
+  &__wrapper {
+    background-color: $bgTransparent;
+    min-height: 100vh;
+  }
+
+  &__padding {
+    padding: 10rem 2rem;
+  }
+}
+
+.wrapperWide {
+  &__wrapper {
+    background-color: $bgTransparent;
+    min-height: 100vh;
+  }
+
+  &__padding {
+    padding: 4rem 2rem;
+  }
+}
+
+.vectorAnimation {
+  &__canvas {
+    height: 100vh;
+    width: 100vw;
+  }
+}
