@@ -11,58 +11,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-const deliveries = [
-  {
-    name: "Blood Vials",
-    meta: [
-      {
-        name: "trackingNumber",
-        value: "3849djfdf",
-      },
-      {
-        name: "targetDate",
-        value: "Today",
-      },
-    ],
-    status: "Est. 48 Minutes away",
-    progress: 0.48,
-    trackingNumber: "3849djfdf",
-  },
-  {
-    name: "0anrt489kansdfkm",
-    meta: [
-      {
-        name: "trackingNumber",
-        value: "0anrt489kansdfkm",
-      },
-      {
-        name: "targetDate",
-        value: "December 25,2020",
-      },
-    ],
-    status: "Being Prepared",
-    progress: 0,
-    trackingNumber: "0anrt489kansdfkm",
-  },
-
-  {
-    name: "xdgrtu7i7kkk",
-    meta: [
-      {
-        name: "trackingNumber",
-        value: "xdgrtu7i7kkk",
-      },
-      {
-        name: "targetDate",
-        value: "Jue 12, 2020",
-      },
-    ],
-    status: "Delivered",
-    progress: 1,
-    trackingNumber: "xdgrtu7i7kkk",
-  },
-];
-
 class HomePage extends Component {
   constructor(props) {
     super(props);
@@ -79,20 +27,36 @@ class HomePage extends Component {
     this.setState({ loading: true });
 
     // TODO pull from firebase
+    this.setState({ loading: true });
 
-    const activeDeliveries = deliveries.filter((delivery) => {
-      return delivery.progress < 1;
-    });
+    this.listener = this.props.firebase
+      .deliveries()
+      .onSnapshot((querySnapshot) => {
+        let activeDeliveries = [];
+        let recentDeliveries = [];
 
-    const recentDeliveries = deliveries.filter((delivery) => {
-      return delivery.progress === 1;
-    });
+        querySnapshot.forEach(function (doc) {
+          let delivery = doc.data();
 
-    this.setState({
-      activeDeliveries: activeDeliveries,
-      loading: false,
-      recentDeliveries: recentDeliveries,
-    });
+          delivery["trackingNumber"] = doc.id;
+
+          if (delivery.progress < 1) {
+            activeDeliveries.push(delivery);
+          } else {
+            recentDeliveries.push(delivery);
+          }
+        });
+
+        this.setState({
+          activeDeliveries: activeDeliveries,
+          loading: false,
+          recentDeliveries: recentDeliveries,
+        });
+      });
+  }
+
+  componentWillUnmount() {
+    this.listener();
   }
 
   render() {

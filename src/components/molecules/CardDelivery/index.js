@@ -16,16 +16,19 @@ class CardDelivery extends Component {
               search: `?trackingNumber=${this.props.delivery.trackingNumber}`,
             }}
           >
-            {this.props.delivery.name}
+            {this.props.delivery.name
+              ? this.props.delivery.name
+              : this.props.delivery.trackingNumber}
           </Link>
         </h3>
         <div className="align-items-center d-md-flex justify-content-between ">
           <div>
-            {this.props.delivery.meta.length ? (
-              <h4>
+            <h4>
+              <span>{this.props.delivery.trackingNumber}</span>&nbsp;
+              {this.props.delivery.meta.length ? (
                 <MetaList meta={this.props.delivery.meta} />
-              </h4>
-            ) : null}
+              ) : null}
+            </h4>
           </div>
 
           <div>
@@ -44,11 +47,12 @@ class CardDelivery extends Component {
 }
 
 const MetaList = (props) => (
-  <div>
+  <span>
     {props.meta.map((tag) => {
+      console.log(tag);
       return <span>{tag.value} </span>;
     })}
-  </div>
+  </span>
 );
 
 export default withRouter(CardDelivery);
