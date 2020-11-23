@@ -1,6 +1,6 @@
 import React from "react";
 
-import PasswordChangeForm from "../PasswordChange";
+import PasswordChangeForm from "../../molecules/PasswordChange";
 import { AuthUserContext, withAuthorization } from "../../../session";
 
 import BackgroundFullBleed from "../../atoms/BackgroundFullBleed";

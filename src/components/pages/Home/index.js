@@ -125,7 +125,7 @@ class HomePage extends Component {
                     <h1>Recent History</h1>
 
                     <MagnifyingGlass
-                      className="signout__button"
+                      className="icon__button"
                       color="black"
                       size={32}
                       weight="bold"

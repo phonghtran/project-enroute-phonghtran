@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import { withFirebase } from "../../../firebase";
 import * as ROUTES from "../../../constants/routes";
 
+import { searchToObject } from "../../../helpers/helpers";
 import BackgroundFullBleed from "../../atoms/BackgroundFullBleed";
 import InputText from "../../atoms/InputText";
 
@@ -42,6 +43,7 @@ const INITIAL_STATE = {
   email: "",
   passwordOne: "",
   passwordTwo: "",
+  accountType: "customer",
   error: null,
 };
 
@@ -52,10 +54,18 @@ class SignUpFormBase extends Component {
     this.state = { ...INITIAL_STATE };
   }
 
+  locationQuery = searchToObject(this.props.location.search);
+
+  componentDidMount() {
+    if (this.locationQuery.accountType) {
+      this.setState({
+        accountType: this.locationQuery.accountType,
+      });
+    }
+  }
   onSubmit = (event) => {
     /* Disabling since it isn't needed for this proof-of-concept */
 
-    console.log("hi");
     this.setState({ error: { message: "Disabled for this demonstration." } });
 
     /* const { fullname, email, passwordOne } = this.state;
@@ -86,11 +96,24 @@ class SignUpFormBase extends Component {
   };
 
   onChange = (event) => {
-    this.setState({ [event.name]: event.value });
+    if (event.target) {
+      this.setState({ [event.target.name]: event.target.value });
+    } else {
+      this.setState({ [event.name]: event.value });
+    }
+
+    console.log(event.currentTarget, this.state);
   };
 
   render() {
-    const { fullname, email, passwordOne, passwordTwo, error } = this.state;
+    const {
+      fullname,
+      email,
+      passwordOne,
+      passwordTwo,
+      accountType,
+      error,
+    } = this.state;
 
     const isInvalid =
       passwordOne !== passwordTwo ||
@@ -100,6 +123,34 @@ class SignUpFormBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
+        <p>
+          Are you looking to just order shipping or also looking to operate
+          deliveries?
+        </p>
+
+        <p>
+          <input
+            type="radio"
+            id="accountTypeCustomer"
+            name="accountType"
+            value="customer"
+            checked={accountType === "customer"}
+            onChange={this.onChange}
+          />
+          <label htmlFor="accountTypeCustomer">Customer</label>
+
+          <input
+            type="radio"
+            id="accountTypeContractor"
+            name="accountType"
+            value="contractor"
+            checked={accountType === "contractor"}
+            onChange={this.onChange}
+          />
+          <label htmlFor="accountTypeContractor">
+            Customer &amp; Contractor
+          </label>
+        </p>
         <InputText
           type="text"
           placeholder="Full Name"
@@ -108,7 +159,6 @@ class SignUpFormBase extends Component {
           name="fullname"
           onChange={this.onChange}
         />
-
         <InputText
           type="text"
           placeholder="Email Address"
@@ -117,7 +167,6 @@ class SignUpFormBase extends Component {
           name="email"
           onChange={this.onChange}
         />
-
         <InputText
           type="password"
           placeholder="Password"
@@ -126,7 +175,6 @@ class SignUpFormBase extends Component {
           name="passwordOne"
           onChange={this.onChange}
         />
-
         <InputText
           type="password"
           placeholder="Password"
@@ -135,11 +183,9 @@ class SignUpFormBase extends Component {
           name="passwordTwo"
           onChange={this.onChange}
         />
-
         <button disabled={isInvalid} type="submit">
           Sign Up
         </button>
-
         {error && <p className="form__error">{error.message}</p>}
       </form>
     );
@@ -148,7 +194,23 @@ class SignUpFormBase extends Component {
 
 const SignUpLink = () => (
   <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+    <Link
+      to={{
+        pathname: ROUTES.SIGN_UP,
+        search: "?accountType=customer",
+      }}
+    >
+      Register a new account
+    </Link>
+    <br />
+    <Link
+      to={{
+        pathname: ROUTES.SIGN_UP,
+        search: "?accountType=contractor",
+      }}
+    >
+      Looking to become a drone contractor?
+    </Link>
   </p>
 );
 

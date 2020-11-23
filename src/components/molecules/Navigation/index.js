@@ -29,7 +29,7 @@ const NavigationAuth = () => (
     <div>
       <Link className="" to={ROUTES.ACCOUNT}>
         <UserCircle
-          className="icon__button"
+          className="signout__button"
           color="white"
           size={32}
           weight="bold"

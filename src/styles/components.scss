@@ -47,6 +47,15 @@
   margin: 3rem 0;
   padding: 0 3.25rem;
 }
+
+.icon {
+  &__button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
 .logoCenter__container {
   margin: 0 0 3rem;
   text-align: center;
@@ -86,14 +95,6 @@
   &__linkBack {
     display: block;
     margin-bottom: 2rem;
-  }
-}
-
-.signout {
-  &__button {
-    &:hover {
-      cursor: pointer;
-    }
   }
 }
 

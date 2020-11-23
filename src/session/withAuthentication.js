@@ -17,15 +17,11 @@ const withAuthentication = (Component) => {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         (authUser) => {
           if (authUser) {
-            console.log("hi", authUser.uid);
-
             this.props.firebase
               .user(authUser.uid)
               .get()
               .then((doc) => {
                 if (doc.exists) {
-                  console.log("Document data:", doc.data());
-
                   const userData = doc.data();
                   authUser.name = userData.name;
                   this.setState({ authUser });
