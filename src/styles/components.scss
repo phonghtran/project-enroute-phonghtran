@@ -8,6 +8,11 @@
   z-index: -1;
 }
 
+.breadbrumb {
+  display: block;
+  margin-bottom: 2rem;
+}
+
 .cardDelivery__container {
   margin: 2rem 0 0;
 }
@@ -33,9 +38,28 @@
   margin-top: 0;
 }
 
+.form__error {
+  color: $secondaryWarning;
+  margin: 1rem 0;
+}
+
 .home__recentHistory {
   margin: 3rem 0;
   padding: 0 3.25rem;
+}
+.logoCenter__container {
+  margin: 0 0 3rem;
+  text-align: center;
+}
+
+.nav__linkText {
+  color: $primaryWhiteAccent;
+  display: block;
+  margin: 0 0 0 1rem;
+
+  &:hover {
+    color: $primaryBrandColor;
+  }
 }
 
 .progressBar {
@@ -63,11 +87,6 @@
     display: block;
     margin-bottom: 2rem;
   }
-
-  &__logoContainer {
-    margin: 0 0 3rem;
-    text-align: center;
-  }
 }
 
 .signout {
@@ -76,11 +95,6 @@
       cursor: pointer;
     }
   }
-}
-
-.breadbrumb {
-  display: block;
-  margin-bottom: 2rem;
 }
 
 .wrapperNarrow {

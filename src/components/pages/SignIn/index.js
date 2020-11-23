@@ -27,7 +27,7 @@ const SignInPage = () => (
           lg={{ span: 5, offset: 1 }}
         >
           <div className="wrapperNarrow__padding">
-            <div className="signin__logoContainer">
+            <div className="logoCenter__container">
               <img src="/assets/logo.jpg" alt="logo" />
             </div>
 
@@ -64,6 +64,7 @@ class SignInFormBase extends Component {
         this.props.history.push(ROUTES.HOME);
       })
       .catch((error) => {
+        console.log(error);
         this.setState({ error });
       });
 
@@ -72,7 +73,6 @@ class SignInFormBase extends Component {
 
   onChange = (event) => {
     this.setState({ [event.name]: event.value });
-    console.log(event.name, event.value);
   };
 
   render() {
@@ -104,7 +104,7 @@ class SignInFormBase extends Component {
           Sign In
         </button>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="form__error">{error.message}</p>}
       </form>
     );
   }

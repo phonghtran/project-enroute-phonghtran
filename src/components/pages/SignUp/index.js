@@ -27,6 +27,7 @@ const SignUpPage = () => (
               Back to Log In
             </Link>
             <h1>Account Registration</h1>
+            <p>Disabled for this demonstration.</p>
 
             <SignUpForm />
           </div>
@@ -52,12 +53,17 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = (event) => {
-    const { fullname, email, passwordOne } = this.state;
+    /* Disabling since it isn't needed for this proof-of-concept */
+
+    console.log("hi");
+    this.setState({ error: { message: "Disabled for this demonstration." } });
+
+    /* const { fullname, email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then((authUser) => {
-        // Create a user in your Firebase realtime database
+        
         this.props.firebase
           .user(authUser.user.uid)
           .set({
@@ -74,14 +80,13 @@ class SignUpFormBase extends Component {
       })
       .catch((error) => {
         this.setState({ error });
-      });
+      }); */
 
     event.preventDefault();
   };
 
   onChange = (event) => {
     this.setState({ [event.name]: event.value });
-    console.log(event.name, event.value);
   };
 
   render() {
@@ -135,7 +140,7 @@ class SignUpFormBase extends Component {
           Sign Up
         </button>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="form__error">{error.message}</p>}
       </form>
     );
   }

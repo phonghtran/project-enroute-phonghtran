@@ -28,6 +28,7 @@ const PasswordForgetPage = () => (
             </Link>
 
             <h1>Recover Password </h1>
+            <p>Disabled for this demonstration.</p>
             <PasswordForgetForm />
           </div>
         </Col>
@@ -38,7 +39,7 @@ const PasswordForgetPage = () => (
 
 const INITIAL_STATE = {
   email: "",
-  error: null,
+  error: "test",
 };
 
 class PasswordForgetFormBase extends Component {
@@ -49,7 +50,15 @@ class PasswordForgetFormBase extends Component {
   }
 
   onSubmit = (event) => {
-    const { email } = this.state;
+    /* Disabling since it isn't needed for this proof-of-concept */
+
+    this.setState({ error: { message: "Disabled for this demonstration." } });
+    /* 
+
+    
+     const { email } = this.state;
+
+  
 
     this.props.firebase
       .doPasswordReset(email)
@@ -60,11 +69,14 @@ class PasswordForgetFormBase extends Component {
         this.setState({ error });
       });
 
+      */
+
     event.preventDefault();
   };
 
   onChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    console.log(event);
+    this.setState({ [event.name]: event.value });
   };
 
   render() {
@@ -88,7 +100,7 @@ class PasswordForgetFormBase extends Component {
           Reset My Password
         </button>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="form__error">{error.message}</p>}
       </form>
     );
   }

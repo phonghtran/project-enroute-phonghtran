@@ -2,6 +2,8 @@ import React, { Component } from "react";
 
 import { withFirebase } from "../../../firebase";
 
+import InputText from "../../atoms/InputText";
+
 const INITIAL_STATE = {
   passwordOne: "",
   passwordTwo: "",
@@ -31,7 +33,7 @@ class PasswordChangeForm extends Component {
   };
 
   onChange = (event) => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.name]: event.value });
   };
 
   render() {
@@ -41,25 +43,29 @@ class PasswordChangeForm extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <InputText
+          type="password"
+          placeholder="Password"
+          label="Password"
+          helperText=""
           name="passwordOne"
-          value={passwordOne}
           onChange={this.onChange}
-          type="password"
-          placeholder="New Password"
         />
-        <input
+
+        <InputText
+          type="password"
+          placeholder="Password"
+          label="Confirm Password"
+          helperText=""
           name="passwordTwo"
-          value={passwordTwo}
           onChange={this.onChange}
-          type="password"
-          placeholder="Confirm New Password"
         />
+
         <button disabled={isInvalid} type="submit">
           Reset My Password
         </button>
 
-        {error && <p>{error.message}</p>}
+        {error && <p className="form__error">{error.message}</p>}
       </form>
     );
   }

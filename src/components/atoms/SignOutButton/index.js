@@ -2,10 +2,10 @@ import React from "react";
 
 import { withFirebase } from "../../../firebase";
 
-import { UserCircle } from "phosphor-react";
+import { SignOut } from "phosphor-react";
 
 const SignOutButton = ({ firebase }) => (
-  <UserCircle
+  <SignOut
     className="signout__button"
     color="white"
     onClick={firebase.doSignOut}
