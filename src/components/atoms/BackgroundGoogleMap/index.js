@@ -337,7 +337,9 @@ class BackgroundGoogleMap extends Component {
       this.mapContainer.current,
       {
         center: this.props.delivery.drone.coordinates,
+        disableDefaultUI: true,
         zoom: 10,
+        zoomControl: true,
       }
     );
 
