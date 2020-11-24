@@ -75,7 +75,6 @@ class PasswordForgetFormBase extends Component {
   };
 
   onChange = (event) => {
-    console.log(event);
     this.setState({ [event.name]: event.value });
   };
 

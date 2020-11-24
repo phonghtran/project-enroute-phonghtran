@@ -101,8 +101,6 @@ class SignUpFormBase extends Component {
     } else {
       this.setState({ [event.name]: event.value });
     }
-
-    console.log(event.currentTarget, this.state);
   };
 
   render() {

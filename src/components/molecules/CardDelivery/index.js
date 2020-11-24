@@ -24,7 +24,10 @@ class CardDelivery extends Component {
         <div className="align-items-center d-md-flex justify-content-between ">
           <div>
             <h4>
-              <span>{this.props.delivery.trackingNumber}</span>&nbsp;
+              {!this.props.delivery.name ? (
+                <span>{this.props.delivery.trackingNumber}</span>
+              ) : null}
+
               {this.props.delivery.meta.length ? (
                 <MetaList meta={this.props.delivery.meta} />
               ) : null}
@@ -49,7 +52,6 @@ class CardDelivery extends Component {
 const MetaList = (props) => (
   <span>
     {props.meta.map((tag) => {
-      console.log(tag);
       return <span>{tag.value} </span>;
     })}
   </span>

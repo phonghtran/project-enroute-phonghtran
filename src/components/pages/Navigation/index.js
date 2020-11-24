@@ -22,12 +22,12 @@ const NavigationAuth = () => (
         <img className="nav__logo" src="/assets/logo_reversed.png" alt="logo" />
       </Link>
       <Link className="" to={ROUTES.HOME}>
-        <span className="nav__linkText"> Deliveries</span>
+        <span className="nav__linkText"> Home</span>
       </Link>
     </div>
 
     <div>
-      <Link className="" to={ROUTES.ACCOUNT}>
+      <Link className="nav__icon" to={ROUTES.ACCOUNT}>
         <UserCircle
           className="icon__button"
           color="white"

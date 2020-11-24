@@ -26,9 +26,6 @@ class HomePage extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    // TODO pull from firebase
-    this.setState({ loading: true });
-
     this.listener = this.props.firebase
       .deliveries()
       .onSnapshot((querySnapshot) => {

@@ -6,6 +6,7 @@ a {
 body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  padding-top: 4rem;
 }
 
 button {
@@ -92,7 +93,12 @@ label {
 nav {
   background-color: $secondaryBrandColor;
   color: $primaryWhiteAccent;
+  left: 0;
   padding: 1rem 1rem;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1030;
 
   .nav__logo {
     height: 2rem;
