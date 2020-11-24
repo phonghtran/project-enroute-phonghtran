@@ -5,6 +5,7 @@ import { withFirebase } from "../../../firebase";
 import { searchToObject } from "../../../helpers/helpers";
 import BackgroundGoogleMap from "../../atoms/BackgroundGoogleMap";
 import ProgressBar from "../../atoms/ProgressBar";
+import CardWeather from "../../molecules/CardWeather";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -95,27 +96,42 @@ class Delivery extends Component {
           <Row>
             <Col className="wrapperNarrow__wrapper" xs="12">
               <div className="wrapperNarrow__padding --fullscreen">
-                <h1>
-                  {delivery.name ? delivery.name : delivery.trackingNumber}
-                </h1>
-                <ProgressBar value={delivery.progress} />
+                <Container>
+                  <Row>
+                    <Col xs="12">
+                      <div className="d-md-flex justify-content-between">
+                        <h1>
+                          {delivery.name
+                            ? delivery.name
+                            : delivery.trackingNumber}
+                        </h1>
 
-                <button onClick={this.droneAnimation}>
-                  Simulate Drone Flight
-                </button>
-                {this.locationQuery.trackingNumber}
-                <p>
-                  {delivery.sender.coordinates.lat},
-                  {delivery.sender.coordinates.lng}
-                </p>
-                <p>
-                  {delivery.recipient.coordinates.lat},
-                  {delivery.recipient.coordinates.lng}
-                </p>
-                <p>
-                  {delivery.drone.coordinates.lat},
-                  {delivery.drone.coordinates.lng}
-                </p>
+                        <button onClick={this.droneAnimation}>
+                          Simulate Drone Flight
+                        </button>
+                      </div>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs="12">
+                      <ProgressBar value={delivery.progress} />
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col xs="12" md="4">
+                      <CardWeather
+                        coordinates={delivery.drone.coordinates}
+                        deliveryAPILoaded={deliveryAPILoaded}
+                      />
+                    </Col>
+                    <Col xs="12" md="4">
+                      <ProgressBar value={delivery.progress} />
+                    </Col>
+                    <Col xs="12" md="4">
+                      <ProgressBar value={delivery.progress} />
+                    </Col>
+                  </Row>
+                </Container>
               </div>
             </Col>
           </Row>
