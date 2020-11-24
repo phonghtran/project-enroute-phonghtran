@@ -10,16 +10,18 @@ class CardDelivery extends Component {
     return (
       <div className="cardDelivery__container">
         <h3>
-          <Link
-            to={{
-              pathname: ROUTES.DELIVERY,
-              search: `?trackingNumber=${this.props.delivery.trackingNumber}`,
-            }}
-          >
-            {this.props.delivery.name
-              ? this.props.delivery.name
-              : this.props.delivery.trackingNumber}
-          </Link>
+          {this.props.delivery.name ? (
+            <Link
+              to={{
+                pathname: ROUTES.DELIVERY,
+                search: `?trackingNumber=${this.props.delivery.trackingNumber}`,
+              }}
+            >
+              {this.props.delivery.name}
+            </Link>
+          ) : (
+            this.props.delivery.trackingNumber
+          )}
         </h3>
         <div className="align-items-center d-md-flex justify-content-between ">
           <div>
