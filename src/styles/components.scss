@@ -8,25 +8,15 @@
   z-index: -1;
 }
 
-$deliveryMapHeight: 25rem;
-
 .backgroundGoogleMap {
   &__container {
-    height: 100%;
-    width: 100%;
+    height: 25rem;
+
+    width: 100vw;
   }
 
   &__map {
     margin-left: 50%;
-  }
-
-  &__wrapper {
-    height: $deliveryMapHeight;
-    left: 0;
-    position: fixed;
-    top: 4rem;
-    width: 100vw;
-    z-index: -1;
   }
 }
 
@@ -60,9 +50,6 @@ $deliveryMapHeight: 25rem;
   margin-top: 0;
 }
 
-.delivery__container {
-  margin-top: $deliveryMapHeight;
-}
 .form__error {
   color: $secondaryWarning;
   margin: 1rem 0;
@@ -136,6 +123,10 @@ $deliveryMapHeight: 25rem;
 
   &__padding {
     padding: 10rem 2rem;
+
+    &.--fullscreen {
+      padding: 2rem;
+    }
   }
 }
 

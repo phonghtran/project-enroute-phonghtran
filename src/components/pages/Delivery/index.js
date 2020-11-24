@@ -30,6 +30,10 @@ class Delivery extends Component {
     super(props);
 
     this.state = { ...INITIAL_STATE };
+    this.droneSimulation = {
+      interval: null,
+      percentage: 0,
+    };
   }
 
   locationQuery = searchToObject(this.props.location.search);
@@ -57,6 +61,25 @@ class Delivery extends Component {
     this.listener();
   }
 
+  droneAnimation = () => {
+    let count = 0;
+
+    this.droneSimulation.interval = window.setInterval(() => {
+      const { delivery } = this.state;
+
+      count += 0.02;
+      delivery.progress = count;
+
+      this.setState({
+        delivery: delivery,
+      });
+
+      if (count >= 1) {
+        clearInterval(this.droneSimulation.interval);
+      }
+    }, 50);
+  };
+
   render() {
     const { deliveryAPILoaded, delivery } = this.state;
 
@@ -71,10 +94,16 @@ class Delivery extends Component {
         <Container className="delivery__container" fluid={true}>
           <Row>
             <Col className="wrapperNarrow__wrapper" xs="12">
-              <div className="wrapperNarrow__padding">
-                {this.locationQuery.trackingNumber}
-                <h1>TODO: pull package details</h1>
+              <div className="wrapperNarrow__padding --fullscreen">
+                <h1>
+                  {delivery.name ? delivery.name : delivery.trackingNumber}
+                </h1>
                 <ProgressBar value={delivery.progress} />
+
+                <button onClick={this.droneAnimation}>
+                  Simulate Drone Flight
+                </button>
+                {this.locationQuery.trackingNumber}
                 <p>
                   {delivery.sender.coordinates.lat},
                   {delivery.sender.coordinates.lng}
