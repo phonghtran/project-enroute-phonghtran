@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import { withFirebase } from "../../../firebase";
-
 import PasswordChangeForm from "../../molecules/PasswordChange";
 import { AuthUserContext, withAuthorization } from "../../../session";
 
@@ -53,4 +51,4 @@ class AccountPage extends Component {
 
 const condition = (authUser) => !!authUser;
 
-export default withAuthorization(condition)(withFirebase(AccountPage));
+export default withAuthorization(condition)(AccountPage);

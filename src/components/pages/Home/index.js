@@ -76,31 +76,35 @@ class HomePageBase extends Component {
               <div className="wrapperWide__padding">
                 {loading && <div>Loading ...</div>}
 
-                <div className="cardDoubleBorder__wrapper">
-                  <div className="cardDoubleBorder__innerContainer">
-                    <h1>Active Deliveries </h1>
+                {activeDeliveries.length > 0 ? (
+                  <div className="cardDoubleBorder__wrapper">
+                    <div className="cardDoubleBorder__innerContainer">
+                      <h1>Active Deliveries </h1>
 
-                    <CardList deliveries={activeDeliveries} />
+                      <CardList deliveries={activeDeliveries} />
+                    </div>
                   </div>
-                </div>
+                ) : null}
 
-                <div className="home__recentHistory">
-                  <div className="align-items-center d-md-flex justify-content-between ">
-                    <h1>Recent History</h1>
+                {recentDeliveries.length > 0 ? (
+                  <div className="home__recentHistory">
+                    <div className="align-items-center d-md-flex justify-content-between ">
+                      <h1>Recent History</h1>
 
-                    <MagnifyingGlass
-                      className="icon__button"
-                      color="black"
-                      size={32}
-                      weight="bold"
+                      <MagnifyingGlass
+                        className="icon__button"
+                        color="black"
+                        size={32}
+                        weight="bold"
+                      />
+                    </div>
+
+                    <CardList
+                      deliveries={recentDeliveries}
+                      hideProgressBar={true}
                     />
                   </div>
-
-                  <CardList
-                    deliveries={recentDeliveries}
-                    hideProgressBar={true}
-                  />
-                </div>
+                ) : null}
               </div>
             </Col>
           </Row>

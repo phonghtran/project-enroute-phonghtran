@@ -30,6 +30,12 @@ button {
   &:hover {
     background-color: rgba($primaryBrandColor, 0.25);
   }
+
+  &.--small {
+    @include roundedCorner(0.5);
+    font-size: 1rem;
+    padding: 0.25rem 0.75rem 0.125rem;
+  }
 }
 
 h1,
@@ -55,6 +61,10 @@ h3 {
 
 h4 {
   font-size: 1.325rem;
+
+  &.--label {
+    margin: 0;
+  }
 }
 
 input[type="password"],

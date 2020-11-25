@@ -360,7 +360,7 @@ class BackgroundGoogleMap extends Component {
       const points = [
         {
           coordinates: this.props.delivery.sender.coordinates,
-          iconURL: "/assets/mapIcons/mapIcon_home.png",
+          iconURL: "/assets/mapIcons/mapIcon_target.png",
         },
 
         {

@@ -68,10 +68,33 @@
   }
 }
 
-.--label {
-  margin: 0;
-}
+.jobSearch {
+  &__table {
+    width: 100%;
 
+    th {
+      font-family: "Teko", sans-serif;
+      font-size: 1.25rem;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+
+    td,
+    th {
+      padding: 0 0.5rem 0.5rem;
+      vertical-align: top;
+    }
+  }
+
+  &__address {
+    font-size: 0.875rem;
+    line-height: 1rem;
+  }
+
+  &__name {
+    font-weight: 900;
+  }
+}
 .logoCenter__container {
   margin: 0 0 3rem;
   text-align: center;

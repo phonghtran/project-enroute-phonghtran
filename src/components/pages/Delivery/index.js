@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { withFirebase } from "../../../firebase";
+import { withAuthorization } from "../../../session";
 import { AuthUserContext } from "../../../session";
 
 import { searchToObject } from "../../../helpers/helpers";
@@ -244,6 +244,6 @@ class DeliveryBase extends Component {
   }
 }
 
-// const condition = (authUser) => !!authUser;
+const condition = (authUser) => !!authUser;
 
-export default withFirebase(Delivery);
+export default withAuthorization(condition)(Delivery);

@@ -10,6 +10,7 @@ import AccountPage from "../Account";
 import Delivery from "../Delivery";
 import * as ROUTES from "../../../constants/routes";
 import { withAuthentication } from "../../../session";
+import JobSearch from "../JobSearch";
 
 const App = () => (
   <Router>
@@ -22,7 +23,7 @@ const App = () => (
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
       <Route path={ROUTES.HOME} component={HomePage} />
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-
+      <Route path={ROUTES.JOBSEARCH} component={JobSearch} />
       <Route path={ROUTES.DELIVERY} component={Delivery} />
     </div>
   </Router>
