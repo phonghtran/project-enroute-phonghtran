@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { GoogleApiWrapper } from "google-maps-react";
 
+/* Shortcut to editing styles since that mapStyle is so verbose */
 const keyColors = {
   urbanAreas: "#EEEADF",
   naturalAreas: "#e1dfda",
@@ -16,6 +17,7 @@ const keyColors = {
   },
 };
 
+/* Construct for Google styling */
 const mapStyle = [
   {
     elementType: "geometry",
@@ -320,6 +322,8 @@ class BackgroundGoogleMap extends Component {
 
     this.mapContainer = React.createRef();
     this.mapObject = React.createRef();
+
+    this.checkIfDataIsLoaded = null;
   }
 
   componentDidMount() {

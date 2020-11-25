@@ -59,31 +59,46 @@ class CardWeather extends Component {
     super(props);
 
     this.state = {
-      items: sampleAPICall,
-      isLoaded: true,
+      items: null,
     };
+
+    this.checkIfDataIsLoaded = null;
   }
 
-  componentDidMount() {}
-
-  componentDidUpdate() {
-    // let { isLoaded } = this.state;
-    // if (this.props.deliveryAPILoaded && !isLoaded) {
-    //   const apiURL = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${this.props.coordinates.lat}&lon=${this.props.coordinates.lng}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
-    //   fetch(apiURL)
-    //     .then((response) => response.json())
-    //     .then((json) => {
-    //       console.log(json);
-    //       this.setState({
-    //         items: json,
-    //         isLoaded: true,
-    //       });
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-    // }
+  componentDidMount() {
+    this.prepData();
   }
+
+  prepData = () => {
+    let { items } = this.state;
+
+    if (this.props.deliveryAPILoaded && !items) {
+      window.clearTimeout(this.checkIfDataIsLoaded);
+
+      const apiURL = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${this.props.coordinates.lat}&lon=${this.props.coordinates.lng}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
+
+      fetch(apiURL)
+        .then((response) => response.json())
+        .then((json) => {
+          console.log("api called");
+          this.setState({
+            items: json,
+            isLoaded: true,
+          });
+        })
+        .catch((error) => {
+          this.checkIfDataIsLoaded = window.setTimeout(() => {
+            this.prepData();
+          }, 30);
+
+          console.log(error);
+        });
+    } else {
+      this.checkIfDataIsLoaded = window.setTimeout(() => {
+        this.prepData();
+      }, 30);
+    }
+  };
 
   cardinalDirections = (deg) => {
     if (deg === 0) {
@@ -141,8 +156,6 @@ class WeatherIcon extends Component {
   render() {
     const weatherId = this.props.items.weather[0].id;
     const mainCategory = weatherId.toString().charAt(0);
-
-    console.log(weatherId, mainCategory);
 
     const iconSize = 48;
 

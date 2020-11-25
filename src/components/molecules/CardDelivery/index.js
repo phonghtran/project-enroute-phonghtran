@@ -4,6 +4,7 @@ import { Link, withRouter } from "react-router-dom";
 import * as ROUTES from "../../../constants/routes";
 
 import ProgressBar from "../../atoms/ProgressBar";
+import MetaList from "../../atoms/MetaList";
 
 class CardDelivery extends Component {
   render() {
@@ -50,13 +51,5 @@ class CardDelivery extends Component {
     );
   }
 }
-
-const MetaList = (props) => (
-  <span>
-    {props.meta.map((tag) => {
-      return <span>{tag.value} </span>;
-    })}
-  </span>
-);
 
 export default withRouter(CardDelivery);

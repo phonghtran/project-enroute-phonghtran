@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { withAuthorization } from "../../../session";
+import { AuthUserContext } from "../../../session";
 
 import { MagnifyingGlass } from "phosphor-react";
 
@@ -12,6 +13,17 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 class HomePage extends Component {
+  // Packages are currently embedded inside the user's account data via the Context
+  render() {
+    return (
+      <AuthUserContext.Consumer>
+        {(authUser) => <HomePageBase authUser={authUser} {...this.props} />}
+      </AuthUserContext.Consumer>
+    );
+  }
+}
+
+class HomePageBase extends Component {
   constructor(props) {
     super(props);
 
@@ -26,34 +38,25 @@ class HomePage extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.listener = this.props.firebase
-      .deliveries()
-      .onSnapshot((querySnapshot) => {
-        let activeDeliveries = [];
-        let recentDeliveries = [];
+    const packages = this.props.authUser.userData.packages;
+    let activeDeliveries = [];
+    let recentDeliveries = [];
 
-        querySnapshot.forEach(function (doc) {
-          let delivery = doc.data();
+    for (const trackingNumber in packages) {
+      const delivery = packages[trackingNumber];
 
-          delivery["trackingNumber"] = doc.id;
+      if (delivery.progress < 1) {
+        activeDeliveries.push(delivery);
+      } else {
+        recentDeliveries.push(delivery);
+      }
+    }
 
-          if (delivery.progress < 1) {
-            activeDeliveries.push(delivery);
-          } else {
-            recentDeliveries.push(delivery);
-          }
-        });
-
-        this.setState({
-          activeDeliveries: activeDeliveries,
-          loading: false,
-          recentDeliveries: recentDeliveries,
-        });
-      });
-  }
-
-  componentWillUnmount() {
-    this.listener();
+    this.setState({
+      activeDeliveries: activeDeliveries,
+      loading: false,
+      recentDeliveries: recentDeliveries,
+    });
   }
 
   render() {
@@ -110,12 +113,11 @@ class HomePage extends Component {
 const CardList = (props) => (
   <div className="cardlist__container">
     {props.deliveries.map((delivery) => {
-      console.log(delivery);
-
       return (
         <CardDelivery
-          hideProgressBar={props.hideProgressBar}
           delivery={delivery}
+          hideProgressBar={props.hideProgressBar}
+          key={delivery.trackingNumber}
         />
       );
     })}

@@ -23,7 +23,8 @@ const withAuthentication = (Component) => {
               .then((doc) => {
                 if (doc.exists) {
                   const userData = doc.data();
-                  authUser.name = userData.name;
+
+                  authUser.userData = userData;
                   this.setState({ authUser });
                 } else {
                   // doc.data() will be undefined in this case
