@@ -18,7 +18,7 @@ class JobSearch extends Component {
 
         <Container fluid={true}>
           <Row>
-            <Col className="wrapperWide__wrapper " xs="12">
+            <Col className="wrapperWide__wrapper --navSpacer" xs="12">
               <div className="wrapperWide__padding">
                 <h1>Transportation Requests </h1>
                 <table className="jobSearch__table">
