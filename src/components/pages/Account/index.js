@@ -25,18 +25,40 @@ class AccountPage extends Component {
                   lg={{ span: 5, offset: 1 }}
                 >
                   <div className="wrapperNarrow__padding">
-                    <h1>Account </h1>
+                    <div className="cardDoubleBorder__wrapper">
+                      <div className="cardDoubleBorder__innerContainer">
+                        <h2>Account </h2>
+                        <label>Account Type</label>
+                        <p>{authUser.userData.accountType}</p>
+                        <label>Company Name</label>
+                        <p>{authUser.userData.companyName}</p>
 
-                    <label>Name</label>
-                    <p>{authUser.userData.name}</p>
+                        <label>Account Administrator</label>
+                        <p>{authUser.userData.name}</p>
 
-                    <label> Current Email Address</label>
-                    <p>{authUser.email}</p>
+                        <label> Current Email Address</label>
+                        <p>{authUser.email}</p>
+                      </div>
+                    </div>
+                    {authUser.userData.accountType === "Contractor" && (
+                      <h2>FAA Certifications </h2>
+                    )}
+                    {authUser.userData.certifications > 0 && (
+                      <CertificationsList
+                        certifications={authUser.userData.certifications}
+                        hideProgressBar={true}
+                      />
+                    )}
 
+                    {authUser.userData.accountType === "Contractor" && (
+                      <section>
+                        <button disabled={true} type="submit">
+                          Add Certification
+                        </button>
+                      </section>
+                    )}
                     <h2>Change Your Password</h2>
-
                     <p>Disabled for this demonstration.</p>
-
                     <PasswordChangeForm />
                   </div>
                 </Col>
@@ -48,6 +70,14 @@ class AccountPage extends Component {
     );
   }
 }
+
+const CertificationsList = (props) => (
+  <div>
+    {props.certifications.map((certification) => {
+      return <p key={certification.name}>{certification.name}</p>;
+    })}
+  </div>
+);
 
 const condition = (authUser) => !!authUser;
 

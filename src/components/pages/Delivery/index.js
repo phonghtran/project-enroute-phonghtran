@@ -194,6 +194,12 @@ class DeliveryBase extends Component {
 
                       <h4 className="--label">Delivery To</h4>
                       <p>{delivery.recipient.address}</p>
+
+                      <h4 className="--label">Drone Coordinates </h4>
+                      <p>
+                        {delivery.drone.coordinates.lat},&nbsp;
+                        {delivery.drone.coordinates.lng}
+                      </p>
                     </Col>
                   </Row>
 

@@ -25,6 +25,9 @@ const withAuthentication = (Component) => {
                   const userData = doc.data();
 
                   authUser.userData = userData;
+
+                  console.log(authUser.userData);
+
                   this.setState({ authUser });
                 } else {
                   // doc.data() will be undefined in this case

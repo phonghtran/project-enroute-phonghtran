@@ -21,11 +21,11 @@ class VectorAnimation extends Component {
       this.vectorNodes.push({
         location: {
           x:
-            Math.floor(Math.random() * window.innerWidth * 1.25) +
-            window.innerWidth * 0.125,
-          y:
-            Math.floor(Math.random() * window.innerHeight) -
+            Math.floor(Math.random() * window.innerWidth * 0.8) +
             window.innerWidth * 0.25,
+          y:
+            Math.floor(Math.random() * window.innerHeight * 0.8) -
+            window.innerHeight * 0.15,
         },
         relationships: relationships,
       });
@@ -42,17 +42,9 @@ class VectorAnimation extends Component {
   renderGraph = () => {
     var canvas = document.getElementById("vectorAnimation__canvas");
 
-    const dpi = window.devicePixelRatio;
-    const canvasheight = +getComputedStyle(canvas)
-      .getPropertyValue("height")
-      .slice(0, -2);
-    const canvaswidth = +getComputedStyle(canvas)
-      .getPropertyValue("width")
-      .slice(0, -2);
-
     //scale the canvas
-    canvas.setAttribute("height", canvasheight * dpi);
-    canvas.setAttribute("width", canvaswidth * dpi);
+    canvas.setAttribute("height", window.innerHeight);
+    canvas.setAttribute("width", window.innerWidth);
 
     if (canvas.getContext) {
       var ctx = canvas.getContext("2d");
@@ -85,12 +77,8 @@ class VectorAnimation extends Component {
   };
 
   render() {
-    const styles = {
-      backgroundImage: `url(${this.props.imageURL})`,
-    };
-
     return (
-      <div className="vectorAnimation" style={styles}>
+      <div className="vectorAnimation">
         <canvas
           className="vectorAnimation__canvas"
           id="vectorAnimation__canvas"

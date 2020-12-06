@@ -25,7 +25,7 @@ class Navigation extends Component {
 class NavigationAuth extends Component {
   render() {
     return (
-      <nav className="align-items-center d-md-flex justify-content-between ">
+      <nav className="align-items-center d-flex justify-content-between ">
         <div className="align-items-center d-md-flex  ">
           <Link className="" to={ROUTES.HOME}>
             <img
@@ -34,15 +34,18 @@ class NavigationAuth extends Component {
               alt="logo"
             />
           </Link>
-          <Link className="" to={ROUTES.HOME}>
-            <span className="nav__linkText"> Home</span>
-          </Link>
 
-          {this.props.authUser.userData.accountType === "contractor" ? (
-            <Link className="" to={ROUTES.JOBSEARCH}>
-              <span className="nav__linkText">Find Contracts</span>
+          <div className="align-items-center d-flex  ">
+            <Link className="nav__linkText" to={ROUTES.HOME}>
+              <span className=""> Home</span>
             </Link>
-          ) : null}
+
+            {this.props.authUser.userData.accountType === "Contractor" && (
+              <Link className="nav__linkText" to={ROUTES.JOBSEARCH}>
+                <span className="">Transportation Requests</span>
+              </Link>
+            )}
+          </div>
         </div>
 
         <div>

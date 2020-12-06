@@ -20,25 +20,25 @@ class JobSearch extends Component {
           <Row>
             <Col className="wrapperWide__wrapper " xs="12">
               <div className="wrapperWide__padding">
-                <h1>Find Contracts</h1>
+                <h1>Transportation Requests </h1>
                 <table className="jobSearch__table">
                   <thead>
                     <tr>
-                      <th>Sender Rating</th>
                       <th>Sender</th>
                       <th>Recipient</th>
                       <th>Distance</th>
                       <th>Delivery Priority</th>
-                      <th>Target Date</th>
+
+                      <th>Certification Prerequisite</th>
+                      <th>Transportation Date</th>
                       <th>Payment</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>9.6 </td>
                       <td>
-                        Stephanie Capelow
+                        Promise Hospital of Dallas
                         <div className="jobSearch__address">
                           7818 Bunker Hill Hill
                           <br />
@@ -46,7 +46,7 @@ class JobSearch extends Component {
                         </div>
                       </td>
                       <td>
-                        Jasper Mohamed
+                        William P Clements Jr University Hospital
                         <div className="jobSearch__address">
                           21950 Shoshone Trail <br />
                           Dallas, TX 75098
@@ -54,6 +54,7 @@ class JobSearch extends Component {
                       </td>
                       <td>30 miles</td>
                       <td>Normal </td>
+                      <td>Commercial Part 107 Waiver </td>
                       <td>12/21/2020 </td>
                       <td>$100</td>
                       <td>
@@ -61,17 +62,16 @@ class JobSearch extends Component {
                       </td>
                     </tr>
                     <tr>
-                      <td>4.3 </td>
                       <td>
-                        Betsey Keggin
+                        Promise Hospital of Dallas
                         <div className="jobSearch__address">
-                          5723 Erie Pass
+                          7818 Bunker Hill Hill
                           <br />
                           Dallas, TX 75098
                         </div>
                       </td>
                       <td>
-                        Edeline Tring{" "}
+                        Texas Scottish Rite Hospital For Children
                         <div className="jobSearch__address">
                           517 Golf Park
                           <br />
@@ -80,6 +80,7 @@ class JobSearch extends Component {
                       </td>
                       <td>53 miles</td>
                       <td>Urgent </td>
+                      <td>Commerical 105 Certificate in Class C Airspace</td>
                       <td>12/12/2020 </td>
                       <td>$200</td>
                       <td>
@@ -87,9 +88,8 @@ class JobSearch extends Component {
                       </td>
                     </tr>
                     <tr>
-                      <td>8.7</td>
                       <td>
-                        Erin Kingsnod
+                        Methodist Charlton Medical Center
                         <div className="jobSearch__address">
                           56012 School Pass
                           <br />
@@ -97,7 +97,7 @@ class JobSearch extends Component {
                         </div>
                       </td>
                       <td>
-                        Judy Brew{" "}
+                        City Hospital
                         <div className="jobSearch__address">
                           88991 Eggendart Road <br />
                           Dallas, TX 75098
@@ -105,6 +105,7 @@ class JobSearch extends Component {
                       </td>
                       <td>7 miles</td>
                       <td>Normal </td>
+                      <td>Part 107 Operating Certificate </td>
                       <td>12/25/2020 </td>
                       <td>$65</td>
                       <td>

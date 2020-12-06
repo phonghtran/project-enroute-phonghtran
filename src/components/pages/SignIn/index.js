@@ -17,7 +17,7 @@ import Col from "react-bootstrap/Col";
 
 const SignInPage = () => (
   <div>
-    <BackgroundFullBleed imageURL={"/assets/backgrounds/trees.jpg"} />
+    <BackgroundFullBleed imageURL={"/assets/backgrounds/overpass.jpg"} />
 
     <Container fluid={true}>
       <Row>
@@ -28,7 +28,7 @@ const SignInPage = () => (
         >
           <div className="wrapperNarrow__padding">
             <div className="logoCenter__container">
-              <img src="/assets/logo.jpg" alt="logo" />
+              <img src="/assets/logo_transparent.png" alt="logo" />
             </div>
 
             <SignInForm />

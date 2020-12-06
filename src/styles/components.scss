@@ -34,7 +34,7 @@
     @include roundedCorner(1);
     @include shadowUplift;
     background-color: $shadowHighight;
-    padding: 3rem;
+    padding: 1rem;
   }
   &__wrapper {
     @include borderFineLine;
@@ -42,10 +42,19 @@
     @include shadowInset;
 
     background-color: $shadowHighight;
-
+    margin-bottom: 3rem;
     padding: 0.75rem;
   }
 }
+
+@media (min-width: 576px) {
+  .cardDoubleBorder {
+    &__innerContainer {
+      padding: 3rem;
+    }
+  }
+}
+
 .cardlist__container {
   margin-top: 0;
 }
@@ -55,9 +64,10 @@
   margin: 1rem 0;
 }
 
-.home__recentHistory {
-  margin: 3rem 0;
-  padding: 0 3.25rem;
+@media (min-width: 576px) {
+  .home__recentHistory {
+    padding: 0 3.25rem;
+  }
 }
 
 .icon {
@@ -107,10 +117,18 @@
   &__linkText {
     color: $primaryWhiteAccent;
     display: block;
-    margin: 0 0 0 1rem;
+    margin: 0 1rem 0 0;
 
     &:hover {
       color: $primaryBrandColor;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .nav {
+    &__linkText {
+      margin: 0 0 0 1rem;
     }
   }
 }
@@ -171,10 +189,18 @@
     background-color: $bgTransparent;
 
     min-height: 100vh;
-  }
 
-  &__padding {
-    padding: 4rem 2rem;
+    &.--navSpacer {
+      padding-top: 6rem;
+    }
+  }
+}
+
+@media (min-width: 576px) {
+  .wrapperWide {
+    &__padding {
+      padding: 4rem 2rem;
+    }
   }
 }
 

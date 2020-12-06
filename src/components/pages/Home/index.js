@@ -64,12 +64,12 @@ class HomePageBase extends Component {
 
     return (
       <div>
-        <BackgroundFullBleed imageURL={"/assets/backgrounds/winter.jpg"} />
+        <BackgroundFullBleed imageURL={"/assets/backgrounds/building.jpg"} />
 
         <Container fluid={true}>
           <Row>
             <Col
-              className="wrapperWide__wrapper "
+              className="wrapperWide__wrapper --navSpacer"
               xs="12"
               lg={{ span: 8, offset: 1 }}
             >
@@ -86,7 +86,7 @@ class HomePageBase extends Component {
                   </div>
                 ) : null}
 
-                {recentDeliveries.length > 0 ? (
+                {recentDeliveries.length > 0 && (
                   <div className="home__recentHistory">
                     <div className="align-items-center d-md-flex justify-content-between ">
                       <h1>Recent History</h1>
@@ -104,7 +104,7 @@ class HomePageBase extends Component {
                       hideProgressBar={true}
                     />
                   </div>
-                ) : null}
+                )}
               </div>
             </Col>
           </Row>
