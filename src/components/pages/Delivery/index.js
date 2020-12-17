@@ -6,6 +6,7 @@ import { AuthUserContext } from "../../../session";
 import { searchToObject } from "../../../helpers/helpers";
 import BackgroundGoogleMap from "../../atoms/BackgroundGoogleMap";
 import ProgressBar from "../../atoms/ProgressBar";
+import LineChartWrapper from "../../atoms/LineChartWrapper";
 import CardWeather from "../../molecules/CardWeather";
 import MetaList from "../../atoms/MetaList";
 
@@ -28,6 +29,35 @@ const INITIAL_STATE = {
     status: "",
     trackingNumber: "",
   },
+};
+const rechartData = {
+  temperature: [
+    { name: "11:10AM", int: 68.1, ext: 72.5 },
+    { name: "11:20AM", int: 68.3, ext: 72.4 },
+    { name: "11:30AM", int: 69.3, ext: 72.3 },
+    { name: "11:40AM", int: 67.2, ext: 74.9 },
+    { name: "11:50AM", int: 66.1, ext: 75.4 },
+    { name: "12:00PM", int: 67.4, ext: 73.2 },
+    { name: "12:10PM", int: 69.1, ext: 72.8 },
+  ],
+  barometric: [
+    { name: "11:10AM", baro: 24 },
+    { name: "11:20AM", baro: 24.2 },
+    { name: "11:30AM", baro: 24.4 },
+    { name: "11:40AM", baro: 23.5 },
+    { name: "11:50AM", baro: 23.5 },
+    { name: "12:00PM", baro: 23.7 },
+    { name: "12:10PM", baro: 24 },
+  ],
+  airspeed: [
+    { name: "11:10AM", airspeed: 24 },
+    { name: "11:20AM", airspeed: 25.2 },
+    { name: "11:30AM", airspeed: 26.4 },
+    { name: "11:40AM", airspeed: 27.5 },
+    { name: "11:50AM", airspeed: 27.5 },
+    { name: "12:00PM", airspeed: 28.7 },
+    { name: "12:10PM", airspeed: 26 },
+  ],
 };
 
 class Delivery extends Component {
@@ -58,7 +88,6 @@ class DeliveryBase extends Component {
   }
 
   prepData = () => {
-    console.log("prep");
     if (this.props.authUser) {
       const delivery = this.props.authUser.userData.packages[
         this.locationQuery.trackingNumber
@@ -186,6 +215,27 @@ class DeliveryBase extends Component {
                         &nbsp; contact@reliabledroneoperators.com
                       </p>
                     </Col>
+                  </Row>
+
+                  <Row>
+                    <Col xs="12" md="4">
+                      <h2>About the Delivery</h2>
+                      <h4 className="--label">Size</h4>
+
+                      <p>Small Container (4 ft x 4 ft x 4ft)</p>
+
+                      <h4 className="--label">Cost</h4>
+
+                      <p>$128.23</p>
+
+                      <h4 className="--label">Type</h4>
+
+                      <p>Urgent Rush</p>
+
+                      <h4 className="--label">Tracking Number</h4>
+
+                      <p> {delivery.trackingNumber}</p>
+                    </Col>
                     <Col xs="12" md="4">
                       <h2>Route</h2>
 
@@ -205,39 +255,30 @@ class DeliveryBase extends Component {
 
                   <Row>
                     <Col xs="12" md="4">
-                      <h2>Package STatus</h2>
-                      <h4 className="--label">Internal Temperature</h4>
+                      <h4 className="--label">
+                        Internal &amp; External Temperatures
+                      </h4>
 
-                      <p>62&deg;F / 17&deg;C</p>
-                      <h4 className="--label">External Temperature</h4>
-
-                      <p>62&deg;F / 17&deg;C</p>
-
-                      <h4 className="--label">barometric pressure</h4>
-
-                      <p>24 inches</p>
-
-                      <h4 className="--label">Airspeed</h4>
-
-                      <p>24 m/s</p>
+                      <LineChartWrapper
+                        value={rechartData.temperature}
+                        lines={["int", "ext"]}
+                      />
                     </Col>
                     <Col xs="12" md="4">
-                      <h2>About the Delivery</h2>
-                      <h4 className="--label">Size</h4>
+                      <h4 className="--label">Barometric Pressure</h4>
 
-                      <p>Small Container (4 ft x 4 ft x 4ft)</p>
+                      <LineChartWrapper
+                        value={rechartData.barometric}
+                        lines={["baro"]}
+                      />
+                    </Col>
+                    <Col xs="12" md="4">
+                      <h4 className="--label">Airspeed </h4>
 
-                      <h4 className="--label">Cost</h4>
-
-                      <p>$128.23</p>
-
-                      <h4 className="--label">Type</h4>
-
-                      <p>Urgent Rush</p>
-
-                      <h4 className="--label">Tracking Number</h4>
-
-                      <p> {delivery.trackingNumber}</p>
+                      <LineChartWrapper
+                        value={rechartData.airspeed}
+                        lines={["airspeed"]}
+                      />
                     </Col>
                   </Row>
                 </Container>
