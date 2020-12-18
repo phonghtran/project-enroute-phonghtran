@@ -8,7 +8,14 @@ import {
   Tooltip,
 } from "recharts";
 
-const colors = ["#313869", "#bdceff"];
+const colors = [
+  "#313869",
+  "#bdceff",
+  "#BBD19C",
+  "#C9CDD9",
+  "#AEB7CE",
+  "#523735",
+];
 
 class LineChartWrapper extends Component {
   render() {
