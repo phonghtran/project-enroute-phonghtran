@@ -36,7 +36,7 @@ class JobSearch extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
+                    <tr className="jobSearch__tableRow ">
                       <td>
                         Promise Hospital of Dallas
                         <div className="jobSearch__address">
@@ -61,7 +61,7 @@ class JobSearch extends Component {
                         <button className="--small">Select</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr className="jobSearch__tableRow">
                       <td>
                         Promise Hospital of Dallas
                         <div className="jobSearch__address">
@@ -87,7 +87,7 @@ class JobSearch extends Component {
                         <button className="--small">Select</button>
                       </td>
                     </tr>
-                    <tr>
+                    <tr className="jobSearch__tableRow --invalid">
                       <td>
                         Methodist Charlton Medical Center
                         <div className="jobSearch__address">
@@ -105,7 +105,11 @@ class JobSearch extends Component {
                       </td>
                       <td>7 miles</td>
                       <td>Normal </td>
-                      <td>Part 107 Operating Certificate </td>
+                      <td className=" ">
+                        <span className="--error">
+                          Part 107 Operating Certificate (Missing)
+                        </span>
+                      </td>
                       <td>12/25/2020 </td>
                       <td>$65</td>
                       <td>
