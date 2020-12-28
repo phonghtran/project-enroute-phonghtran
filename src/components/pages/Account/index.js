@@ -43,7 +43,7 @@ class AccountPage extends Component {
                     {authUser.userData.accountType === "Contractor" && (
                       <h2>FAA Certifications </h2>
                     )}
-                    {authUser.userData.certifications > 0 && (
+                    {authUser.userData.certifications.length > 0 && (
                       <CertificationsList
                         certifications={authUser.userData.certifications}
                         hideProgressBar={true}
