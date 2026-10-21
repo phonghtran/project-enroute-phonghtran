@@ -30,7 +30,7 @@ class CardWeather extends Component {
     if (this.props.deliveryAPILoaded && !items) {
       window.clearTimeout(this.checkIfDataIsLoaded);
 
-      const apiURL = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${this.props.coordinates.lat}&lon=${this.props.coordinates.lng}&appid=${process.env.REACT_APP_OPENWEATHER_API}`;
+      const apiURL = `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=${this.props.coordinates.lat}&lon=${this.props.coordinates.lng}&appid=${import.meta.env.REACT_APP_OPENWEATHER_API}`;
 
       fetch(apiURL)
         .then((response) => response.json())

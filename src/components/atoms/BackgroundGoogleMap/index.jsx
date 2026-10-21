@@ -433,5 +433,5 @@ class BackgroundGoogleMap extends Component {
 }
 
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLEMAP_API,
+  apiKey: import.meta.env.REACT_APP_GOOGLEMAP_API,
 })(BackgroundGoogleMap);
